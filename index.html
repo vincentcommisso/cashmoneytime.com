@@ -420,9 +420,122 @@
   }
 
   ::selection { background:#ffd700; color:#0a3d0a; }
+
+  /* ===== LOADING MONEY RAIN ===== */
+  body.loading-active {
+    overflow: hidden;
+  }
+  .money-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle at center, rgba(28,92,28,0.98), rgba(7,44,7,0.99) 72%),
+      #072c07;
+    transition: opacity .75s ease, visibility .75s ease;
+  }
+  .money-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .loader-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffd700;
+    padding: 24px;
+    animation: loaderPulse 1.2s ease-in-out infinite alternate;
+  }
+  .loader-dollar {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid #4a3c0a;
+    background: radial-gradient(circle at 35% 30%, #fff3a6, #d4af37 58%, #8a6d1a);
+    box-shadow: 0 8px 25px rgba(0,0,0,.45), inset 0 0 10px rgba(255,255,255,.35);
+    color: #0a3d0a;
+    font: bold 48px Georgia, serif;
+    text-shadow: 1px 1px 0 #fff6d0;
+  }
+  .loader-content h2 {
+    font: bold 34px Georgia, 'Times New Roman', serif;
+    text-shadow: 2px 2px 3px #000;
+    margin-bottom: 8px;
+  }
+  .loader-content p {
+    color: #f0e6c0;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .money-bill {
+    position: absolute;
+    top: -140px;
+    width: 78px;
+    height: 36px;
+    border: 2px solid #164d16;
+    border-radius: 3px;
+    background: linear-gradient(135deg, #dff2c4, #8ec56f 55%, #dff2c4);
+    box-shadow: 0 3px 8px rgba(0,0,0,.35);
+    color: #0a3d0a;
+    font: bold 20px Georgia, serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .95;
+    animation: moneyFall linear forwards;
+    will-change: transform;
+  }
+  .money-bill::before,
+  .money-bill::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(10,61,10,.5);
+    border-radius: 2px;
+  }
+  .money-bill::after {
+    inset: 10px 29px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+  }
+  @keyframes moneyFall {
+    0% { transform: translate3d(0,-15vh,0) rotate(0deg) rotateY(0deg); }
+    25% { transform: translate3d(var(--drift-a),25vh,0) rotate(120deg) rotateY(90deg); }
+    50% { transform: translate3d(var(--drift-b),55vh,0) rotate(240deg) rotateY(180deg); }
+    75% { transform: translate3d(var(--drift-a),85vh,0) rotate(360deg) rotateY(270deg); }
+    100% { transform: translate3d(var(--drift-b),125vh,0) rotate(520deg) rotateY(360deg); }
+  }
+  @keyframes loaderPulse {
+    from { transform: scale(.98); }
+    to { transform: scale(1.02); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .money-bill, .loader-content { animation: none !important; }
+    .money-loader { transition-duration: .2s; }
+  }
+
 </style>
 </head>
-<body>
+<body class="loading-active">
+
+  <div class="money-loader" id="moneyLoader" aria-label="MoneyTime website loading">
+    <div class="loader-content">
+      <div class="loader-dollar">$</div>
+      <h2>It's Money Time.</h2>
+      <p>Making it rain...</p>
+    </div>
+  </div>
+
 
   <div class="ticker-bar">
     <span>*** RATES AS LOW AS 6.9% APR *** APPROVAL IN AS LITTLE AS 24 HOURS *** NO HIDDEN FEES, EVER *** ASK ABOUT OUR SAME-DAY FUNDING *** SMALL LOANS. BIG LOANS. YOUR LOAN. ***</span>
@@ -577,6 +690,44 @@
       Loans subject to approval. Rates and terms vary by applicant and province of residence. MoneyTime Ltd. is a fictional demo brand created for web design purposes.
     </div>
   </footer>
+
+
+  <script>
+    (function () {
+      const loader = document.getElementById('moneyLoader');
+      if (!loader) return;
+
+      const billCount = window.innerWidth < 600 ? 28 : 52;
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 0; i < billCount; i++) {
+        const bill = document.createElement('div');
+        bill.className = 'money-bill';
+        bill.textContent = '$';
+        bill.style.left = Math.random() * 100 + 'vw';
+        bill.style.animationDelay = (Math.random() * 1.2) + 's';
+        bill.style.animationDuration = (2.2 + Math.random() * 1.8) + 's';
+        bill.style.setProperty('--drift-a', ((Math.random() * 160) - 80) + 'px');
+        bill.style.setProperty('--drift-b', ((Math.random() * 220) - 110) + 'px');
+        bill.style.transform = 'scale(' + (0.7 + Math.random() * 0.65) + ')';
+        fragment.appendChild(bill);
+      }
+
+      loader.appendChild(fragment);
+
+      const hideLoader = () => {
+        loader.classList.add('is-hidden');
+        document.body.classList.remove('loading-active');
+        window.setTimeout(() => loader.remove(), 850);
+      };
+
+      window.addEventListener('load', () => {
+        window.setTimeout(hideLoader, 2400);
+      });
+
+      window.setTimeout(hideLoader, 4500);
+    })();
+  </script>
 
   <script>
     const amountSlider = document.getElementById('amountSlider');
