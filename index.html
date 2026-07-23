@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Time Limited - Fast Cash Loans, Any Size</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background: #e9e4d0 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%23e9e4d0"/><rect width="2" height="2" fill="%23e2dcc4"/></svg>');
+    color:#1a1a1a;
+  }
+  a { color:inherit; }
+
+  /* ===== TICKER ===== */
+  .ticker-bar {
+    background:#0a3d0a;
+    color:#ffd700;
+    font-size:12px;
+    font-weight:bold;
+    padding:4px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:3px solid #ffd700;
+  }
+  .ticker-bar span {
+    display:inline-block;
+    padding-left:100%;
+    animation: ticker 22s linear infinite;
+  }
+  @keyframes ticker {
+    0% { transform:translateX(0); }
+    100% { transform:translateX(-100%); }
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(#1c5c1c, #0a3d0a 60%, #072c07);
+    border-bottom:4px solid #ffd700;
+    padding:14px 20px;
+  }
+  .header-inner {
+    max-width:1000px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo-badge {
+    width:52px;height:52px;
+    background: radial-gradient(circle at 35% 30%, #ffe98a, #d4af37 55%, #8a6d1a 100%);
+    border-radius:50%;
+    border:2px solid #4a3c0a;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.6);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:bold;
+    font-size:22px;
+    color:#0a3d0a;
+    text-shadow:1px 1px 0 #fff6d0;
+    font-family: Georgia, serif;
+  }
+  .logo-text {
+    color:#ffd700;
+    text-shadow: 2px 2px 2px #000;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height:1.1;
+  }
+  .logo-text .big {
+    font-size:26px;
+    font-weight:bold;
+  }
+  .logo-text .small {
+    font-size:11px;
+    color:#e6f2e6;
+    text-shadow:1px 1px 1px #000;
+    letter-spacing:1px;
+  }
+  nav {
+    display:flex;
+    gap:4px;
+    flex-wrap:wrap;
+  }
+  nav a {
+    background: linear-gradient(#e2e2e2,#b8b8b8);
+    border:2px outset #d4d4d4;
+    padding:6px 12px;
+    font-size:12px;
+    font-weight:bold;
+    color:#1a1a1a;
+    text-decoration:none;
+    border-radius:4px;
+  }
+  nav a:hover { background: linear-gradient(#f5f5f5,#c8c8c8); }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(#0a3d0a, #145214 50%, #0a3d0a),
+                repeating-linear-gradient(45deg, rgba(255,215,0,0.03) 0 10px, transparent 10px 20px);
+    padding:40px 20px 50px;
+    text-align:center;
+    border-bottom:5px solid #ffd700;
+  }
+  .hero h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color:#ffd700;
+    font-size:38px;
+    text-shadow: 2px 2px 3px #000;
+    margin-bottom:10px;
+  }
+  .hero .sub {
+    color:#f0e6c0;
+    font-size:16px;
+    max-width:620px;
+    margin:0 auto 22px;
+    text-shadow:1px 1px 2px #000;
+  }
+  .hero .sub b { color:#fff; }
+
+  .apply-btn {
+    display:inline-block;
+    background: linear-gradient(#ffe98a, #d4af37 45%, #a5820f);
+    border:3px outset #ffe98a;
+    border-radius:8px;
+    color:#0a3d0a;
+    font-family: Georgia, serif;
+    font-weight:bold;
+    font-size:22px;
+    padding:14px 40px;
+    text-decoration:none;
+    box-shadow: 0 3px 0 #6b4e0a, 0 6px 10px rgba(0,0,0,0.5);
+    letter-spacing:1px;
+  }
+  .apply-btn:hover { filter:brightness(1.08); }
+  .apply-btn:active {
+    box-shadow: 0 1px 0 #6b4e0a, 0 2px 5px rgba(0,0,0,0.5);
+    transform:translateY(2px);
+  }
+  .hero-note {
+    margin-top:10px;
+    font-size:11px;
+    color:#c9d9c9;
+  }
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip {
+    background:#fff8dc;
+    border-top:2px solid #d4af37;
+    border-bottom:2px solid #d4af37;
+    padding:10px;
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    color:#5c4a0a;
+  }
+  .trust-strip .stars { color:#c9a800; letter-spacing:2px; }
+
+  /* ===== SECTION SHELL ===== */
+  section.panel {
+    max-width:960px;
+    margin:26px auto;
+    background:#ffffff;
+    border:3px solid #0a3d0a;
+    border-radius:6px;
+    box-shadow: 4px 4px 0 #b7ab7a, 6px 6px 12px rgba(0,0,0,0.25);
+  }
+  .panel-title {
+    background: linear-gradient(#1c5c1c, #0a3d0a);
+    color:#ffd700;
+    font-family: Georgia, serif;
+    font-size:18px;
+    padding:8px 16px;
+    border-bottom:3px solid #ffd700;
+    text-shadow:1px 1px 2px #000;
+  }
+  .panel-body { padding:20px; }
+
+  /* ===== LOAN TYPES GRID ===== */
+  .loan-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  @media (max-width:700px){ .loan-grid{ grid-template-columns:1fr; } }
+  .loan-card {
+    border:2px solid #b7ab7a;
+    background: linear-gradient(#fdfaf0, #f2ecd6);
+    border-radius:6px;
+    padding:14px;
+    text-align:center;
+  }
+  .loan-card .icon {
+    font-size:32px;
+    margin-bottom:6px;
+  }
+  .loan-card h3 {
+    font-family: Georgia, serif;
+    color:#0a3d0a;
+    font-size:16px;
+    margin-bottom:6px;
+  }
+  .loan-card p { font-size:12px; color:#333; line-height:1.5; }
+  .loan-card .amt {
+    display:inline-block;
+    margin-top:8px;
+    background:#0a3d0a;
+    color:#ffd700;
+    font-size:11px;
+    font-weight:bold;
+    padding:3px 10px;
+    border-radius:10px;
+  }
+
+  /* ===== STEPS ===== */
+  .steps {
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .step {
+    flex:1;
+    min-width:150px;
+    text-align:center;
+    padding:12px;
+    background:#f4f1e2;
+    border:1px dashed #b7ab7a;
+    border-radius:6px;
+  }
+  .step .num {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:30px;height:30px;
+    background: radial-gradient(circle at 35% 30%, #ffe98a, #d4af37);
+    border-radius:50%;
+    font-weight:bold;
+    color:#0a3d0a;
+    border:1px solid #8a6d1a;
+    margin-bottom:6px;
+  }
+  .step h4 { font-size:13px; color:#0a3d0a; margin-bottom:4px; }
+  .step p { font-size:11px; color:#444; }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonial {
+    background:#fffbe6;
+    border:1px solid #d4af37;
+    border-radius:6px;
+    padding:12px 14px;
+    margin-bottom:12px;
+    font-size:12px;
+    font-style:italic;
+    position:relative;
+  }
+  .testimonial:last-child{ margin-bottom:0; }
+  .testimonial .name {
+    display:block;
+    margin-top:6px;
+    font-style:normal;
+    font-weight:bold;
+    color:#0a3d0a;
+    font-size:11px;
+  }
+  .testimonial .stars { color:#c9a800; }
+
+  /* ===== APPLY BAND ===== */
+  .apply-band {
+    background: linear-gradient(#0a3d0a, #072c07);
+    border-top:5px solid #ffd700;
+    border-bottom:5px solid #ffd700;
+    text-align:center;
+    padding:36px 20px;
+    margin-top:10px;
+  }
+  .apply-band h2 {
+    font-family: Georgia, serif;
+    color:#ffd700;
+    text-shadow:2px 2px 2px #000;
+    font-size:26px;
+    margin-bottom:8px;
+  }
+  .apply-band p {
+    color:#e6f2e6;
+    font-size:13px;
+    margin-bottom:18px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background:#072c07;
+    color:#cfe0cf;
+    text-align:center;
+    font-size:11px;
+    padding:18px;
+    border-top:2px solid #ffd700;
+  }
+  footer .fine {
+    max-width:700px;
+    margin:8px auto 0;
+    color:#8fa38f;
+    font-size:10px;
+    line-height:1.5;
+  }
+
+  ::selection { background:#ffd700; color:#0a3d0a; }
+</style>
+</head>
+<body>
+
+  <div class="ticker-bar">
+    <span>*** RATES AS LOW AS 6.9% APR *** APPROVAL IN AS LITTLE AS 24 HOURS *** NO HIDDEN FEES, EVER *** ASK ABOUT OUR SAME-DAY FUNDING *** SMALL LOANS. BIG LOANS. YOUR LOAN. ***</span>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-badge">$</div>
+        <div class="logo-text">
+          <div class="big">MoneyTime <span style="font-size:16px;">Ltd.</span></div>
+          <div class="small">LOANS WHEN YOU NEED THEM</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#loans">Loan Types</a>
+        <a href="#how">How It Works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#apply">Apply Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>Need Cash? We've Got Time For You.</h1>
+    <p class="sub">From <b>$500</b> to <b>$50,000</b> — MoneyTime Ltd. offers fast, flexible loans for whatever life throws your way. Simple application. Real people. Money in your account, fast.</p>
+    <a href="#apply" class="apply-btn">APPLY NOW &raquo;</a>
+    <div class="hero-note">No obligation. No credit impact to check your rate.</div>
+  </div>
+
+  <div class="trust-strip">
+    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> RATED BY OVER 12,000 CUSTOMERS &nbsp;|&nbsp; A+ MEMBER, NATIONAL LENDING ALLIANCE &nbsp;|&nbsp; SECURE 128-BIT ENCRYPTION
+  </div>
+
+  <section class="panel" id="loans">
+    <div class="panel-title">&#128176; Choose Your Loan</div>
+    <div class="panel-body">
+      <div class="loan-grid">
+        <div class="loan-card">
+          <div class="icon">&#128179;</div>
+          <h3>Personal Loans</h3>
+          <p>Cover bills, repairs, or a surprise expense without draining savings.</p>
+          <span class="amt">$500 - $10,000</span>
+        </div>
+        <div class="loan-card">
+          <div class="icon">&#127968;</div>
+          <h3>Home &amp; Property Loans</h3>
+          <p>Renovate, repair, or consolidate with a loan sized to the job.</p>
+          <span class="amt">$5,000 - $50,000</span>
+        </div>
+        <div class="loan-card">
+          <div class="icon">&#128188;</div>
+          <h3>Small Business Loans</h3>
+          <p>Inventory, equipment, or a cash flow gap — funded fast.</p>
+          <span class="amt">$2,000 - $50,000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="how">
+    <div class="panel-title">&#9201; How It Works</div>
+    <div class="panel-body">
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h4>Apply Online</h4>
+          <p>Fill out our secure 2-minute form. No paperwork required to start.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h4>Get Approved</h4>
+          <p>Most applicants hear back the same day. Real underwriters, real answers.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h4>Get Funded</h4>
+          <p>Money deposited directly to your account, often within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="reviews">
+    <div class="panel-title">&#128172; What Customers Say</div>
+    <div class="panel-body">
+      <div class="testimonial">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        "I needed money fast for a car repair and MoneyTime had funds in my account the next morning. Painless process."
+        <span class="name">- D. Whitfield, Toronto ON</span>
+      </div>
+      <div class="testimonial">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        "Used a small business loan to restock inventory before the holidays. Approval was quick and the team explained everything clearly."
+        <span class="name">- R. Nguyen, Mississauga ON</span>
+      </div>
+      <div class="testimonial">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        "No surprise fees, no runaround. Exactly what they promised on the site."
+        <span class="name">- J. Alcott, Hamilton ON</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="apply-band" id="apply">
+    <h2>Ready When You Are.</h2>
+    <p>Check your rate in minutes — it won't affect your credit score.</p>
+    <a href="#" class="apply-btn">APPLY NOW &raquo;</a>
+  </div>
+
+  <footer>
+    MoneyTime Ltd. &copy; 2026 &nbsp;|&nbsp; Licensed Lender &nbsp;|&nbsp; Member, National Lending Alliance
+    <div class="fine">
+      Loans subject to approval. Rates and terms vary by applicant and province of residence. MoneyTime Ltd. is a fictional demo brand created for web design purposes.
+    </div>
+  </footer>
+
+</body>
+</html>
