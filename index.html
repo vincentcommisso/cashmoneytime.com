@@ -415,6 +415,182 @@
 
   ::selection { background:#ffd700; color:#0a3d0a; }
 
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible {
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ===== APPLIED-TODAY COUNTER ===== */
+  .applied-counter {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .applied-counter .num {
+    color:#0a3d0a;
+    font-family: Georgia, serif;
+    font-weight:bold;
+  }
+
+  /* ===== EMAIL ESTIMATE BUTTON ===== */
+  .email-estimate-btn {
+    display:inline-block;
+    margin-top:16px;
+    background: linear-gradient(#e2e2e2,#b8b8b8);
+    border:2px outset #d4d4d4;
+    border-radius:5px;
+    padding:8px 16px;
+    font-size:12px;
+    font-weight:bold;
+    color:#0a3d0a;
+    text-decoration:none;
+    cursor:pointer;
+    font-family: Verdana, Arial, sans-serif;
+  }
+  .email-estimate-btn:hover { background: linear-gradient(#f5f5f5,#c8c8c8); }
+  .email-estimate-btn:active { transform:translateY(1px); }
+
+  /* ===== LIVE CHAT BUBBLE ===== */
+  .chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 500;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #ffe98a, #d4af37);
+    border:3px outset #ffe98a;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    font-size:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    color:#0a3d0a;
+  }
+  .chat-toggle:hover { filter:brightness(1.06); }
+  .chat-toggle .ping {
+    position:absolute;
+    top:-4px;
+    right:-4px;
+    background:#c0392b;
+    color:#fff;
+    font-size:10px;
+    font-weight:bold;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #fff8dc;
+  }
+  .chat-window {
+    position: fixed;
+    bottom: 92px;
+    right: 20px;
+    z-index: 500;
+    width: 280px;
+    max-width: calc(100vw - 40px);
+    background:#fdfaf0;
+    border:3px solid #0a3d0a;
+    border-radius:8px;
+    box-shadow: 4px 4px 0 #b7ab7a, 6px 6px 12px rgba(0,0,0,0.3);
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+  }
+  .chat-window.is-open { display:flex; }
+  .chat-header {
+    background: linear-gradient(#1c5c1c, #0a3d0a);
+    color:#ffd700;
+    font-family: Georgia, serif;
+    font-size:13px;
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:2px solid #ffd700;
+  }
+  .chat-header .status {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-family: Verdana, Arial, sans-serif;
+  }
+  .chat-header .dot {
+    width:8px;height:8px;
+    border-radius:50%;
+    background:#5fd35f;
+    display:inline-block;
+    box-shadow:0 0 4px #5fd35f;
+  }
+  .chat-header .close-chat {
+    cursor:pointer;
+    color:#f0e6c0;
+    font-weight:bold;
+    font-size:15px;
+    line-height:1;
+  }
+  .chat-body {
+    padding:12px;
+    font-size:12px;
+    color:#1a1a1a;
+    max-height:220px;
+    overflow-y:auto;
+  }
+  .chat-bubble {
+    background:#e9e4d0;
+    border:1px solid #b7ab7a;
+    border-radius:8px;
+    padding:8px 10px;
+    margin-bottom:8px;
+    line-height:1.5;
+  }
+  .chat-bubble.you {
+    background:#0a3d0a;
+    color:#fff8dc;
+    margin-left:24px;
+  }
+  .chat-name {
+    display:block;
+    font-weight:bold;
+    color:#0a3d0a;
+    font-size:10px;
+    margin-bottom:3px;
+  }
+  .chat-bubble.you .chat-name { color:#ffd700; }
+  .chat-footer {
+    border-top:1px solid #d4af37;
+    padding:8px;
+    display:flex;
+    gap:6px;
+  }
+  .chat-footer input {
+    flex:1;
+    padding:6px 8px;
+    font-size:12px;
+    border:2px inset #b7ab7a;
+    border-radius:4px;
+  }
+  .chat-footer button {
+    background: linear-gradient(#1c5c1c, #0a3d0a);
+    color:#ffd700;
+    border:none;
+    border-radius:4px;
+    padding:0 12px;
+    font-weight:bold;
+    font-size:12px;
+    cursor:pointer;
+  }
+
   /* ===== LOADING MONEY RAIN ===== */
   body.loading-active {
     overflow: hidden;
@@ -555,10 +731,10 @@
   </div>
 
   <div class="trust-strip">
-    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> RATED BY OVER 12,000 CUSTOMERS &nbsp;|&nbsp; A+ MEMBER, NATIONAL LENDING ALLIANCE &nbsp;|&nbsp; SECURE 128-BIT ENCRYPTION
+    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> RATED BY OVER 12,000 CUSTOMERS &nbsp;|&nbsp; A+ MEMBER, NATIONAL LENDING ALLIANCE &nbsp;|&nbsp; SECURE 128-BIT ENCRYPTION &nbsp;|&nbsp; <span class="applied-counter">&#128200; <span class="num" id="appliedCount">0</span> people applied today</span>
   </div>
 
-  <section class="panel" id="loans">
+  <section class="panel reveal" id="loans">
     <div class="panel-title">&#128176; Choose Your Loan</div>
     <div class="panel-body">
       <div class="loan-grid">
@@ -584,7 +760,7 @@
     </div>
   </section>
 
-  <section class="panel" id="calculator">
+  <section class="panel reveal" id="calculator">
     <div class="panel-title">&#128202; Loan Calculator</div>
     <div class="panel-body">
       <div class="calc-wrap">
@@ -618,10 +794,13 @@
         </div>
       </div>
       <div class="calc-note">This is an estimate only. Actual rates and terms depend on approval. Not a guarantee of financing.</div>
+      <div style="text-align:center;">
+        <a href="#" class="email-estimate-btn" id="emailEstimateBtn">&#9993; Email Me This Estimate</a>
+      </div>
     </div>
   </section>
 
-  <section class="panel" id="how">
+  <section class="panel reveal" id="how">
     <div class="panel-title">&#9201; How It Works</div>
     <div class="panel-body">
       <div class="steps">
@@ -644,7 +823,7 @@
     </div>
   </section>
 
-  <section class="panel" id="reviews">
+  <section class="panel reveal" id="reviews">
     <div class="panel-title">&#128172; What Customers Say</div>
     <div class="panel-body">
       <div class="testimonial">
@@ -665,10 +844,32 @@
     </div>
   </section>
 
-  <div class="apply-band" id="apply">
+  <div class="apply-band reveal" id="apply">
     <h2>Ready When You Are.</h2>
     <p>Check your rate in minutes — it won't affect your credit score.</p>
     <a href="#" class="apply-btn">APPLY NOW &raquo;</a>
+  </div>
+
+  <div class="chat-toggle" id="chatToggle">
+    &#128172;
+    <span class="ping" id="chatPing">1</span>
+  </div>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="status"><span class="dot"></span> MoneyTime Support</div>
+      <span class="close-chat" id="chatClose">&times;</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-bubble">
+        <span class="chat-name">AMANDA &middot; SUPPORT</span>
+        Hi there! &#128075; Thanks for stopping by MoneyTime. Have a question about loans or the application process?
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chatInput" placeholder="Type a message...">
+      <button id="chatSend">Send</button>
+    </div>
   </div>
 
   <footer>
@@ -761,6 +962,156 @@
     rateSelect.addEventListener('change', calculate);
 
     calculate();
+  </script>
+
+  <script>
+    // ===== SCROLL REVEAL =====
+    (function () {
+      const targets = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || !targets.length) {
+        targets.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+  <script>
+    // ===== "PEOPLE APPLIED TODAY" COUNTER =====
+    (function () {
+      const el = document.getElementById('appliedCount');
+      if (!el) return;
+
+      // Seed a believable base that stays consistent for the day
+      const today = new Date().toDateString();
+      const storageKey = 'mt_applied_seed_' + today;
+      let seed = Number(sessionStorage.getItem(storageKey));
+      if (!seed) {
+        seed = 340 + Math.floor(Math.random() * 90);
+        sessionStorage.setItem(storageKey, seed);
+      }
+
+      let count = seed;
+      el.textContent = count.toLocaleString();
+
+      function bump() {
+        count += Math.floor(Math.random() * 3) + 1; // +1 to +3
+        el.textContent = count.toLocaleString();
+        el.style.transition = 'color .3s ease';
+        el.style.color = '#c9a800';
+        setTimeout(() => { el.style.color = ''; }, 350);
+      }
+
+      setInterval(bump, 9000 + Math.random() * 6000);
+    })();
+  </script>
+
+  <script>
+    // ===== EMAIL ME THIS ESTIMATE =====
+    (function () {
+      const btn = document.getElementById('emailEstimateBtn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const amount = document.getElementById('outAmount').textContent;
+        const interest = document.getElementById('outInterest').textContent;
+        const total = document.getElementById('outTotal').textContent;
+        const payment = document.getElementById('paymentOut').textContent;
+        const term = document.getElementById('termVal').textContent;
+        const rateText = document.getElementById('rateSelect').selectedOptions[0].textContent;
+
+        const subject = 'My MoneyTime Loan Estimate';
+        const body =
+          'Here is my estimated loan breakdown from MoneyTime Ltd.:\n\n' +
+          'Loan Amount: ' + amount + '\n' +
+          'Term: ' + term + '\n' +
+          'Estimated APR: ' + rateText + '\n' +
+          'Estimated Monthly Payment: ' + payment + '\n' +
+          'Total Interest: ' + interest + '\n' +
+          'Total Repaid: ' + total + '\n\n' +
+          'This is an estimate only and not a guarantee of financing.';
+
+        window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+      });
+    })();
+  </script>
+
+  <script>
+    // ===== LIVE CHAT BUBBLE (DEMO) =====
+    (function () {
+      const toggle = document.getElementById('chatToggle');
+      const win = document.getElementById('chatWindow');
+      const closeBtn = document.getElementById('chatClose');
+      const ping = document.getElementById('chatPing');
+      const body = document.getElementById('chatBody');
+      const input = document.getElementById('chatInput');
+      const sendBtn = document.getElementById('chatSend');
+      if (!toggle || !win) return;
+
+      const replies = [
+        "Thanks for reaching out! One of our loan specialists will follow up shortly.",
+        "Great question — our team can walk you through rates and terms in more detail.",
+        "You can also use the Loan Calculator above to see an instant estimate!",
+        "Approvals are typically same-day. Want me to note your info for a callback?",
+        "Happy to help! Feel free to hit Apply Now and we'll take it from there."
+      ];
+
+      function addBubble(text, isYou) {
+        const div = document.createElement('div');
+        div.className = 'chat-bubble' + (isYou ? ' you' : '');
+        const name = document.createElement('span');
+        name.className = 'chat-name';
+        name.textContent = isYou ? 'YOU' : 'AMANDA · SUPPORT';
+        div.appendChild(name);
+        div.appendChild(document.createTextNode(text));
+        body.appendChild(div);
+        body.scrollTop = body.scrollHeight;
+      }
+
+      function openChat() {
+        win.classList.add('is-open');
+        if (ping) ping.style.display = 'none';
+      }
+
+      toggle.addEventListener('click', () => {
+        win.classList.toggle('is-open');
+        if (win.classList.contains('is-open') && ping) ping.style.display = 'none';
+      });
+
+      closeBtn.addEventListener('click', () => win.classList.remove('is-open'));
+
+      function handleSend() {
+        const val = input.value.trim();
+        if (!val) return;
+        addBubble(val, true);
+        input.value = '';
+        setTimeout(() => {
+          const reply = replies[Math.floor(Math.random() * replies.length)];
+          addBubble(reply, false);
+        }, 700 + Math.random() * 600);
+      }
+
+      sendBtn.addEventListener('click', handleSend);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleSend();
+      });
+
+      // Gentle nudge: auto-open a hint after a delay if untouched
+      setTimeout(() => {
+        if (!win.classList.contains('is-open') && ping) {
+          ping.style.display = 'flex';
+        }
+      }, 6000);
+    })();
   </script>
 </body>
 </html>
